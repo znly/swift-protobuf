@@ -105,11 +105,11 @@ final class ProtobufEncodingSizeVisitor: Visitor {
     }
   }
 
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(
+  func visitMapField<KeyType, ValueType>(
     fieldType: ProtobufMap<KeyType, ValueType>.Type,
     value: ProtobufMap<KeyType, ValueType>.BaseType,
     fieldNumber: Int
-  ) throws where KeyType.BaseType: Hashable {
+  ) throws {
     let tagSize = FieldTag(fieldNumber: fieldNumber,
                            wireFormat: .lengthDelimited).encodedSize
     let keyTagSize = FieldTag(

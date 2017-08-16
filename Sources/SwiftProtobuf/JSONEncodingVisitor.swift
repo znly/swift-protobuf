@@ -126,7 +126,7 @@ final class JSONEncodingVisitor: Visitor {
     encoder.append(text: "]")
   }
 
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(fieldType: ProtobufMap<KeyType, ValueType>.Type, value: ProtobufMap<KeyType, ValueType>.BaseType, fieldNumber: Int) throws  where KeyType.BaseType: Hashable {
+  func visitMapField<KeyType, ValueType>(fieldType: ProtobufMap<KeyType, ValueType>.Type, value: ProtobufMap<KeyType, ValueType>.BaseType, fieldNumber: Int) throws {
     let jsonFieldName = try self.jsonFieldName(for: fieldNumber)
     encoder.startField(name: jsonFieldName)
     var arraySeparator = ""

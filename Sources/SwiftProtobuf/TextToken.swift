@@ -53,7 +53,7 @@ private func fromHexDigit(_ c: Character) -> UInt8? {
 
 private func fromHexDigit(_ c: UInt8) -> UInt8? {
   if c >= 48 && c <= 57 {
-    return c - 48
+    return UInt8(c - 48)
   }
   switch c {
   case 65, 97: return 10

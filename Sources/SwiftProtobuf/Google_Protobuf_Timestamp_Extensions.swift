@@ -173,7 +173,7 @@ private func parseTimestamp(s: String) throws -> (Int64, Int32) {
             adjusted += Int64(hourOffset) * Int64(3600)
             adjusted += Int64(minuteOffset) * Int64(60)
         }
-        if adjusted < -62135596800 || adjusted > 253402300799 {
+        if adjusted < -62135596800 as Int64 || adjusted > 253402300799 as Int64 {
             throw DecodingError.malformedJSONTimestamp
         }
         seconds = adjusted
@@ -195,7 +195,7 @@ private func formatTimestamp(seconds: Int64, nanos: Int32) -> String? {
         || (seconds > 0 && nanos < 0)
         || (seconds < -62135596800)
         || (seconds == -62135596800 && nanos < 0)
-        || (seconds >= 253402300800)) {
+        || (seconds >= 253402300800 as Int64)) {
             return nil
     }
 

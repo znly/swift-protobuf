@@ -98,11 +98,11 @@ final class TextEncodingVisitor: Visitor {
     }
   }
 
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(
+  func visitMapField<KeyType, ValueType>(
     fieldType: ProtobufMap<KeyType, ValueType>.Type,
     value: ProtobufMap<KeyType, ValueType>.BaseType,
     fieldNumber: Int
-  ) throws where KeyType.BaseType: Hashable {
+  ) throws {
     let protoFieldName = try self.protoFieldName(for: fieldNumber)
     for (k,v) in value {
       encoder.startMessageField(name: protoFieldName)

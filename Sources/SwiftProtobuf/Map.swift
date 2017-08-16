@@ -16,7 +16,6 @@ import Foundation
 import Swift
 
 public struct ProtobufMap<KeyType: MapKeyType, ValueType: MapValueType>
-    where KeyType.BaseType: Hashable
 {
     public typealias Key = KeyType.BaseType
     public typealias Value = ValueType.BaseType

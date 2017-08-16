@@ -149,7 +149,7 @@ struct TextFieldDecoder: FieldDecoder {
         try decodeRepeatedMessageField(fieldType: fieldType, value: &value)
     }
     
-    private func decodeMapEntry<KeyType: MapKeyType, ValueType: MapValueType>(mapType: ProtobufMap<KeyType, ValueType>.Type, keyField: inout KeyType.BaseType?, valueField: inout ValueType.BaseType?) throws where KeyType.BaseType: Hashable {
+    private func decodeMapEntry<KeyType, ValueType>(mapType: ProtobufMap<KeyType, ValueType>.Type, keyField: inout KeyType.BaseType?, valueField: inout ValueType.BaseType?) throws {
         let terminator = try scanner.readObjectStart()
         while let token = try scanner.next() {
             if token == terminator {
@@ -173,7 +173,7 @@ struct TextFieldDecoder: FieldDecoder {
  
     }
     
-    mutating func decodeMapField<KeyType: MapKeyType, ValueType: MapValueType>(fieldType: ProtobufMap<KeyType, ValueType>.Type, value: inout ProtobufMap<KeyType, ValueType>.BaseType) throws where KeyType.BaseType: Hashable {
+    mutating func decodeMapField<KeyType, ValueType>(fieldType: ProtobufMap<KeyType, ValueType>.Type, value: inout ProtobufMap<KeyType, ValueType>.BaseType) throws {
         _ = try scanner.skipOptional(token: .colon)
         if try scanner.skipOptional(token: .beginArray) {
             var firstItem = true

@@ -97,11 +97,11 @@ final class DebugDescriptionVisitor: Visitor {
     separator = ","
   }
 
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(
+  func visitMapField<KeyType, ValueType>(
     fieldType: ProtobufMap<KeyType, ValueType>.Type,
     value: ProtobufMap<KeyType, ValueType>.BaseType,
     fieldNumber: Int
-  ) throws where KeyType.BaseType: Hashable {
+  ) throws {
     let swiftFieldName = self.swiftFieldName(for: fieldNumber)
     description.append(separator)
     description.append(swiftFieldName)

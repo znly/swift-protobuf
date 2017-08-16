@@ -88,14 +88,14 @@ public struct JSONEncoder {
     }
     mutating func putInt64(value: Int64, quote: Bool) {
         // Always quote integers with abs value > 2^53
-        if quote || value > 0x1FFFFFFFFFFFFF || value < -0x1FFFFFFFFFFFFF {
+        if quote || value > 0x1FFFFFFFFFFFFF as Int64 || value < -0x1FFFFFFFFFFFFF as Int64 {
             append(text: "\"" + String(value) + "\"")
         } else {
             append(text: String(value))
         }
     }
     mutating func putUInt64(value: UInt64, quote: Bool) {
-        if quote || value > 0x1FFFFFFFFFFFFF { // 2^53 - 1
+        if quote || value > 0x1FFFFFFFFFFFFF as Int64 { // 2^53 - 1
             append(text: "\"" + String(value) + "\"")
         } else {
             append(text: String(value))

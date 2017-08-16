@@ -95,8 +95,8 @@ private func parseDuration(text: String) -> (Int64, Int32)? {
 private func formatDuration(seconds: Int64, nanos: Int32) -> String? {
     if ((seconds < 0 && nanos > 0)
         || (seconds > 0 && nanos < 0)
-        || (seconds < -315576000000)
-        || (seconds > 315576000000)) {
+        || (seconds < -315576000000 as Int64)
+        || (seconds > 315576000000 as Int64)) {
         return nil
     } else if nanos == 0 {
         return "\(seconds)s"

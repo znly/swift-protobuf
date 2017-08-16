@@ -81,10 +81,10 @@ public protocol Visitor: class {
 
   /// Called for each map field. The method is called once with the complete
   /// dictionary of keys/values for the field.
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(
+  func visitMapField<KeyType, ValueType>(
     fieldType: ProtobufMap<KeyType, ValueType>.Type,
     value: ProtobufMap<KeyType, ValueType>.BaseType,
-    fieldNumber: Int) throws where KeyType.BaseType: Hashable
+    fieldNumber: Int) throws
 
   /// Called with the raw bytes that represent any proto2 unknown fields.
   func visitUnknown(bytes: Data)

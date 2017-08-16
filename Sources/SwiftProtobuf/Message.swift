@@ -193,7 +193,7 @@ public protocol Proto3Message: Message {
 /// `SwiftProtobuf.Message & Hashable` if you need to use equality
 /// tests or put it in a `Set<>`.
 ///
-public protocol _MessageImplementationBase: Message, Hashable, MapValueType, FieldType {
+public protocol _MessageImplementationBase: Message, Hashable, MapValueType {
   // The compiler actually generates the following methods. Default
   // implementations below redirect the standard names. This allows developers
   // to override the standard names to customize the behavior.

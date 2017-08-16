@@ -70,11 +70,11 @@ final class HashVisitor: Visitor {
     }
   }
 
-  func visitMapField<KeyType: MapKeyType, ValueType: MapValueType>(
+  func visitMapField<KeyType, ValueType>(
     fieldType: ProtobufMap<KeyType, ValueType>.Type,
     value: ProtobufMap<KeyType, ValueType>.BaseType,
     fieldNumber: Int
-  ) where KeyType.BaseType: Hashable {
+  ) {
     mix(fieldNumber)
     // Note: When ProtobufMap<Hashable, Hashable> is Hashable, this will
     // simplify to mix(value.hashValue).
